@@ -1,0 +1,12 @@
+.header {
+  display: flex;
+  justify-content: left;
+  padding: 50px;
+  padding-bottom: 20px;
+}
+
+h2 {
+  color: #ea4f87;
+  padding: 30px;
+  font-size: 1.5rem;
+}

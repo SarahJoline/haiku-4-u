@@ -1,0 +1,22 @@
+.subject,
+.subject-name {
+  color: #ea4f87;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  border-color: #ea4f87;
+  width: 281px;
+  height: 101px;
+}
+
+button {
+  background-color: #ea4f87;
+  width: 281px;
+  height: 40px;
+  color: white;
+}

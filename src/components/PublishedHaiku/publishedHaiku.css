@@ -1,0 +1,17 @@
+.haiku {
+  background-color: #585656;
+  width: 281px;
+  height: 101px;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: row;
+}
+
+.imgWillGoHere {
+  background-color: #585656;
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+}
