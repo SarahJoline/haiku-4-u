@@ -1,6 +1,13 @@
 .subject,
 .subject-name {
   color: #ea4f87;
+  margin: 0px 0px 10px 50px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.subject-name {
+  font-size: 30px;
 }
 
 .form {
@@ -8,15 +15,26 @@
   flex-direction: column;
 }
 
-input {
+textarea {
   border-color: #ea4f87;
   width: 281px;
   height: 101px;
+  margin: 0px 0px 10px 50px;
+  border-radius: 3px;
+}
+
+textarea::placeholder {
+  line-height: 25px;
+  padding: 10px;
 }
 
 button {
+  border-color: #ea4f87;
   background-color: #ea4f87;
-  width: 281px;
+  width: 285px;
   height: 40px;
   color: white;
+  margin-left: 50px;
+  border: none;
+  border-radius: 3px;
 }

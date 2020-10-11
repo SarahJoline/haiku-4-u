@@ -5,9 +5,7 @@ import Heart from "./heart.svg";
 function PublishedHaiku() {
   return (
     <div className="publishedHaiku">
-      <div className="haiku">
-        This is a haiku. I wrote it to fill this space. Coding takes some time.
-      </div>
+      <div className="haiku"></div>
       <div className="userInfo">
         <div className="imgWillGoHere"></div>
         <div className="userLinks">

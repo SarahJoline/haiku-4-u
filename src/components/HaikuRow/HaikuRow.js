@@ -7,9 +7,11 @@ import PublishedHaiku from "./../PublishedHaiku/PublishedHaiku";
 function HaikuRow() {
   return (
     <div className="haikuRow">
-      <img src={Squiggles} alt="squiggly lines" />
+      <img src={Squiggles} alt="squiggly lines" className="squiggles" />
       <div className="rows">
         <Input />
+        <PublishedHaiku />
+        <PublishedHaiku />
         <PublishedHaiku />
       </div>
     </div>

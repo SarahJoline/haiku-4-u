@@ -1,17 +1,41 @@
 .haiku {
-  background-color: #585656;
+  background-color: #c2bcbc;
   width: 281px;
   height: 101px;
+  margin-top: 65px;
+  border-radius: 3px;
 }
 
 .userInfo {
   display: flex;
   flex-direction: row;
+  margin-top: 15px;
+}
+
+.haiku,
+.userInfo {
+  margin-left: 30px;
 }
 
 .imgWillGoHere {
-  background-color: #585656;
+  background-color: #c2bcbc;
   height: 40px;
   width: 40px;
   border-radius: 20px;
+}
+
+.userLinks {
+  margin: 5px 110px 0px 20px;
+}
+
+.publishedUser {
+  font-weight: bold;
+  color: black;
+  text-decoration: none;
+}
+
+.userPosts {
+  font-size: 12px;
+  text-decoration: none;
+  color: rgb(0, 140, 255);
 }
