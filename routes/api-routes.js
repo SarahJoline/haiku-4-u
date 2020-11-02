@@ -13,8 +13,7 @@ router.get("/haikus", (req, res) => {
   });
 
   router.post("/posted", (req, res) => {
-    console.log('POSTED!');
-    
+
     db.Haikus.create({
       subject: req.body.subject,
       author: req.body.author,

@@ -6,7 +6,7 @@ function NewTopic() {
 
      function postHaiku(haiku) {
         axios
-          .post("localhost:5000/api/posted", {
+          .post("/api/posted", {
             subject: haiku.subject,
             author: haiku.author,
             text: haiku.text

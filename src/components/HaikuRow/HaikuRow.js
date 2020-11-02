@@ -11,8 +11,6 @@ function HaikuRow() {
       <div className="rows">
         <Input />
         <PublishedHaiku />
-        <PublishedHaiku />
-        <PublishedHaiku />
       </div>
     </div>
   );
