@@ -6,13 +6,11 @@ const mongoose = require("mongoose");
 
 dotenv.config()
 
+
 const MONGO_URI = process.env.MONGODB_URI;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
-const apiRoutes = require("./routes/api-routes");
-app.use("/api", apiRoutes);
 
 mongoose
   .connect(MONGO_URI, {
@@ -21,6 +19,11 @@ mongoose
   })
   .then(() => console.log("connected to mongoDB"))
   .catch((err) => console.log(err));
+
+
+const apiRoutes = require("./routes/api-routes");
+
+app.use("/api", apiRoutes);
 
 
 app.listen(PORT, () => {

@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const HaikuSchema = new Schema({
-    Subject: {
+    subject: {
         type: String,
     },
     text: {
