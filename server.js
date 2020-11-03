@@ -13,7 +13,7 @@ const MONGO_URI = process.env.MONGODB_URI;
 
  1. In your package.json for your react app, add "proxy": <server, for example http://localhost:5000>. This makes react go to this location for any routes it doesn't have, which is nice.
  2. In your node app add the cors library "npm i --save cors". 
- 3. In your sever.js, require cors. 
+ 3. In your server.js, require cors. 
  4. In your server.js, tell the app to use cors. 
     CODE:
     app.use(cors());
