@@ -1,11 +1,17 @@
 import React from "react"; 
 import "./input.css";
 
-function Input() {
+function Input(props) {
+  const haikus = props.haikuData;
+  console.log('haikus', haikus)
+
+//   let haikuArray = haikus.map((haikus, index) => {
+// <h3 className="subject-name">{haikus.subject}</h3>
+//   })
+
+
   return (
     <div className="input">
-      <h5 className="subject">SUBJECT</h5>
-      <h3 className="subject-name">Pizza Puffs</h3>
       <div className="form">
         <textarea
           rows="3"
@@ -16,6 +22,14 @@ function Input() {
       </div>
     </div>
   );
+// });
+
+
+// return (
+//   <div className="wrap-container">
+//     <div className="container">{haikuArray}</div>
+//   </div>
+// );
 }
 
 export default Input;

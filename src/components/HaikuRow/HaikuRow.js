@@ -1,34 +1,34 @@
 import React, {useState, useEffect} from "react";
 import "./haikuRow.css";
-import axios from "axios";
 import Squiggles from "./squiggles.svg";
 import Input from "../Input/Input";
 import PublishedHaiku from "../PublishedHaiku/PublishedHaiku";
 
 function HaikuRow() {
-  let [haikus, setHaikus] = useState({ saved: [] });
-
+  let [haiku, setHaikus] = useState();
+  
   useEffect(() => {
-    axios
-      .get("/api/haikus")
-      .then((haikus) => {
-        console.log(haikus)
-        setHaikus({ saved: haikus });
-      })
-      .catch((err) => console.log(err));
+    async function fetchData() {
+     let res = await fetch("/api/haikus")
+     res = await res.json()
+      setHaikus(res)
+     }
+      fetchData()
   }, []);
 
-  let savedArr = !haikus.saved.data ? [] : haikus.saved.data;
-  console.log(savedArr);
 
-  return savedArr !== undefined ? (
+  return haiku !== undefined ? (
     <div>
-      {savedArr.map((res) => (
-    <div className="haikuRow">
+      {haiku.map((haiku) => (
+    <div className="haikuRow" key={haiku._id}>
       <img src={Squiggles} alt="squiggly lines" className="squiggles" />
       <div className="rows">
-        <Input />
-       <PublishedHaiku />
+        <div className="col">
+      <h5 className="subject">SUBJECT</h5>
+      <h3 className="subject-name">{haiku.subject}</h3>
+        <Input haikuData={haiku}/>
+        </div>
+       <PublishedHaiku haikuData={haiku}/>
       </div>
     </div>
   ))}
@@ -36,10 +36,11 @@ function HaikuRow() {
   ) : (
 <div className="container">
   <div>
-    <h4>Nothing Yet!</h4>
+    {/* add a loading thingy here maybe */}
   </div>
 </div>
 );
 }
+
 
 export default HaikuRow;

@@ -11,3 +11,8 @@
 .squiggles {
   width: 100%;
 }
+
+.col {
+  display: flex;
+  flex-direction: column;
+}

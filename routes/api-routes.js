@@ -25,4 +25,12 @@ router.get("/haikus", (req, res) => {
     });
   });
 
+  router.delete("/delete", (req, res) => {
+    db.Haikus.findByIdAndDelete(req.params.id).then((haiku) => {
+      res.json(haiku)
+    }).catch((err) => {
+      res.json(err)
+    })
+  })
+
 module.exports = router;
