@@ -1,35 +1,39 @@
-import React from "react"; 
+import React, {useState} from "react"; 
 import "./input.css";
+import axios from "axios";
 
 function Input(props) {
   const haikus = props.haikuData;
   console.log('haikus', haikus)
 
-//   let haikuArray = haikus.map((haikus, index) => {
-// <h3 className="subject-name">{haikus.subject}</h3>
-//   })
+  let [haiku, setHaiku] = useState({subject: haikus.subject, text: " "});
 
+  function postNew() {
+    axios.post("/api/posted", {
+      text: haiku.text,
+      subject: haiku.subject
+    }).catch((err) => {
+      if (err) {
+        console.log(err)
+      }
+    })
+  }
 
   return (
     <div className="input">
       <div className="form">
         <textarea
           rows="3"
-          cols="2"
           placeholder="This box is for you,&#10;with your creative gift to,&#10;begin your haiku"
+          onChange={(e) => {
+            setHaiku({ ...haiku, text: e.target.value });}}
         ></textarea>
-        <button>PUBLISH HAIKU</button>
+        <button onClick={(e) => {
+          postNew(haiku)
+        }}>PUBLISH HAIKU</button>
       </div>
     </div>
   );
-// });
-
-
-// return (
-//   <div className="wrap-container">
-//     <div className="container">{haikuArray}</div>
-//   </div>
-// );
 }
 
 export default Input;

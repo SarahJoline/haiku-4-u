@@ -2,15 +2,20 @@ import React from "react";
 import "./publishedHaiku.css";
 import Heart from "./heart.svg";
 
-function PublishedHaiku() {
-  return (
+function PublishedHaiku(props) {
+  const haikus = props.haikuData;
+  console.log(haikus)
+  
+  return haikus !== undefined ? (
     <div className="publishedHaiku">
-      <div className="haiku"></div>
+    {haikus.map((res) => (
+      <div>
+      <div className="haiku">{res.text}</div>
       <div className="userInfo">
         <div className="imgWillGoHere"></div>
         <div className="userLinks">
           <a href="#" className="publishedUser">
-            Don Pinkus
+            {haikus.author}
           </a>
           <br />
           <a href="#" className="userPosts">
@@ -20,7 +25,11 @@ function PublishedHaiku() {
         <img src={Heart} alt="ily"></img>
       </div>
     </div>
-  );
+    ))}
+ </div>
+  ) : (
+    <div></div>
+  )
 }
 
 export default PublishedHaiku;

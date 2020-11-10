@@ -1,9 +1,19 @@
+.publishedHaiku {
+  display: flex;
+  flex-direction: row;
+}
+
 .haiku {
   background-color: #c2bcbc;
   width: 281px;
   height: 101px;
   margin-top: 65px;
   border-radius: 3px;
+  line-height: 22px;
+  padding: 15px;
+  background: #fffbfc;
+  color: #ff2c6f;
+  border: 1px dashed #ffd4dc;
 }
 
 .userInfo {

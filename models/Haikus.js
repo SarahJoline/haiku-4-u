@@ -3,13 +3,17 @@ const Schema = mongoose.Schema;
 
 const HaikuSchema = new Schema({
     subject: {
-        type: String,
+        type: String
     },
     text: {
         type: String
     },
     author: {
         type: String
+    },
+    timestamp: {
+        type: Date,
+        default: Date.now
     }
 });
 

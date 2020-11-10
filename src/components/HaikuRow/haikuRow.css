@@ -1,18 +1,15 @@
 .haikuRow {
   padding: 0px;
   margin: 50px 0px;
+
 }
 
 .rows {
   display: flex;
   flex-direction: row;
+  overflow: auto;
 }
 
 .squiggles {
   width: 100%;
-}
-
-.col {
-  display: flex;
-  flex-direction: column;
 }

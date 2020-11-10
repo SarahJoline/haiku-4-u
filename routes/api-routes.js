@@ -3,7 +3,7 @@ const router = express.Router();
 const db = require("../models");
 
 router.get("/haikus", (req, res) => {
-    db.Haikus.find()
+    db.Haikus.find().sort({timestamp: -1})
       .then((haiku) => {
         res.json(haiku);
       })
@@ -13,7 +13,6 @@ router.get("/haikus", (req, res) => {
   });
 
   router.post("/posted", (req, res) => {
-
     db.Haikus.create({
       subject: req.body.subject,
       author: req.body.author,
@@ -25,8 +24,9 @@ router.get("/haikus", (req, res) => {
     });
   });
 
+
   router.delete("/delete", (req, res) => {
-    db.Haikus.findByIdAndDelete(req.params.id).then((haiku) => {
+    db.Haikus.findByIdAndDelete(req.params._id).then((haiku) => {
       res.json(haiku)
     }).catch((err) => {
       res.json(err)

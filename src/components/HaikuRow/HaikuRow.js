@@ -3,43 +3,54 @@ import "./haikuRow.css";
 import Squiggles from "./squiggles.svg";
 import Input from "../Input/Input";
 import PublishedHaiku from "../PublishedHaiku/PublishedHaiku";
+import _ from "lodash";
 
 function HaikuRow() {
-  let [haiku, setHaikus] = useState();
+  let [haikus, setHaikus] = useState();
   
   useEffect(() => {
     async function fetchData() {
      let res = await fetch("/api/haikus")
      res = await res.json()
-      setHaikus(res)
+     const rawHaikus = res;
+    //  const groupedHaikus = _.groupBy(rawHaikus, "subject") // easy syntax
+    const groupedHaikus = _.groupBy(rawHaikus, (element) => {
+      if (element.subject == undefined) {
+        return "miscellaneous"
+      }
+      return element.subject
+    });
+      setHaikus(groupedHaikus)
      }
       fetchData()
   }, []);
+ 
+  // Render a set of rows, one for each subject in our "haikus" object.
+  const haikuRows = [];
 
-
-  return haiku !== undefined ? (
-    <div>
-      {haiku.map((haiku) => (
-    <div className="haikuRow" key={haiku._id}>
-      <img src={Squiggles} alt="squiggly lines" className="squiggles" />
-      <div className="rows">
+  for (let subject in haikus) {
+    haikuRows.push(
+      <div  className="haikuRow">
+          <img src={Squiggles} alt="squiggly lines" className="squiggles" />
+        <div className="rows">
         <div className="col">
-      <h5 className="subject">SUBJECT</h5>
-      <h3 className="subject-name">{haiku.subject}</h3>
-        <Input haikuData={haiku}/>
+          <h5 className="subject">SUBJECT</h5>
+          <h3 className="subject-name">{subject}</h3>
+          <Input haikuData={haikus[subject]}/>
         </div>
-       <PublishedHaiku haikuData={haiku}/>
+        <PublishedHaiku haikuData={haikus[subject]}/>
+        </div>
       </div>
+    )
+  }
+
+  return haikus !== undefined ? (
+    <div>
+        {haikuRows}
     </div>
-  ))}
-  </div>
   ) : (
-<div className="container">
-  <div>
-    {/* add a loading thingy here maybe */}
-  </div>
-</div>
-);
+    <div></div>
+  )
 }
 
 
