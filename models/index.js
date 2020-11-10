@@ -1,3 +1,3 @@
 module.exports = {
-    Haikus: require("./Haikus")
-  };
+  Haikus: require("./Haikus"),
+};

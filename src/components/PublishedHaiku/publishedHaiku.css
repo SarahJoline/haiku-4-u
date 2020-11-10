@@ -3,6 +3,12 @@
   flex-direction: row;
 }
 
+pre {
+  white-space: pre;
+  word-wrap: break-word;
+  overflow: hidden;
+}
+
 .haiku {
   background-color: #c2bcbc;
   width: 281px;
@@ -13,7 +19,7 @@
   padding: 15px;
   background: #fffbfc;
   color: #ff2c6f;
-  border: 1px dashed #ffd4dc;
+  border: 1px solid #ffd4dc;
 }
 
 .userInfo {

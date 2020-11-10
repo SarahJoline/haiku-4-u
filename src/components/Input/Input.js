@@ -1,22 +1,24 @@
-import React, {useState} from "react"; 
+import React, { useState } from "react";
 import "./input.css";
 import axios from "axios";
 
 function Input(props) {
   const haikus = props.haikuData;
-  console.log('haikus', haikus)
+  console.log("haikus", haikus);
 
-  let [haiku, setHaiku] = useState({subject: haikus.subject, text: " "});
+  let [haiku, setHaiku] = useState({ subject: haikus.subject, text: " " });
 
   function postNew() {
-    axios.post("/api/posted", {
-      text: haiku.text,
-      subject: haiku.subject
-    }).catch((err) => {
-      if (err) {
-        console.log(err)
-      }
-    })
+    axios
+      .post("/api/posted", {
+        text: haiku.text,
+        subject: haiku.subject,
+      })
+      .catch((err) => {
+        if (err) {
+          console.log(err);
+        }
+      });
   }
 
   return (
@@ -24,13 +26,18 @@ function Input(props) {
       <div className="form">
         <textarea
           rows="3"
-          placeholder="This box is for you,&#10;with your creative gift to,&#10;begin your haiku"
+          placeholder="Write your haikus here,&#10;bla bla bla bla bla, bla bla.&#10;Then smash 'publish', bitch"
           onChange={(e) => {
-            setHaiku({ ...haiku, text: e.target.value });}}
+            setHaiku({ ...haiku, text: e.target.value });
+          }}
         ></textarea>
-        <button onClick={(e) => {
-          postNew(haiku)
-        }}>PUBLISH HAIKU</button>
+        <button
+          onClick={(e) => {
+            postNew(haiku);
+          }}
+        >
+          PUBLISH HAIKU
+        </button>
       </div>
     </div>
   );
