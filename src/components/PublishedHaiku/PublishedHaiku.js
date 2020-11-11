@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import "./publishedHaiku.css";
 import Heart from "./heart.svg";
 
@@ -6,10 +7,15 @@ function PublishedHaiku(props) {
   const haikus = props.haikuData;
   console.log(haikus);
 
+  function deleteBook(haiku) {
+    const id = haiku.target.id;
+    axios.delete(`/api/delete/${id}`);
+  }
+
   return haikus !== undefined ? (
     <div className="publishedHaiku">
       {haikus.map((res) => (
-        <div>
+        <div className="idHere" key={res._id}>
           <pre className="haiku">{res.text}</pre>
           <div className="userInfo">
             <div className="imgWillGoHere"></div>
@@ -22,7 +28,15 @@ function PublishedHaiku(props) {
                 7 Haikus
               </a>
             </div>
-            <img src={Heart} alt="ily"></img>
+            <img
+              src={Heart}
+              alt="ily"
+              onClick={(event) => {
+                deleteBook(event);
+              }}
+              id={res._id}
+              data={res}
+            ></img>
           </div>
         </div>
       ))}

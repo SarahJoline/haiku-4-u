@@ -4,9 +4,11 @@ import axios from "axios";
 
 function Input(props) {
   const haikus = props.haikuData;
-  console.log("haikus", haikus);
 
-  let [haiku, setHaiku] = useState({ subject: haikus.subject, text: " " });
+  let [haiku, setHaiku] = useState({
+    subject: haikus,
+    text: " ",
+  });
 
   function postNew() {
     axios
@@ -25,6 +27,7 @@ function Input(props) {
     <div className="input">
       <div className="form">
         <textarea
+          className="haiku-text"
           rows="3"
           placeholder="Write your haikus here,&#10;bla bla bla bla bla, bla bla.&#10;Then smash 'publish', bitch"
           onChange={(e) => {
@@ -32,6 +35,7 @@ function Input(props) {
           }}
         ></textarea>
         <button
+          className="publish-btn"
           onClick={(e) => {
             postNew(haiku);
           }}

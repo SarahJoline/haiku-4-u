@@ -1,0 +1,41 @@
+.topic-launch {
+  padding: 30px;
+  background-color: #f8eef2;
+}
+
+.subject-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.newTopic-input {
+  border-color: #f8eef2;
+  width: 285px;
+  height: 101px;
+  border-radius: 3px;
+  margin-bottom: 20px;
+  text-align: center;
+  line-height: 25px;
+  padding-top: 10px;
+  background-color: #f8eef2;
+}
+
+.author,
+.subject-input {
+  border: 1px solid #f8eef2;
+  border-radius: 3px;
+  margin-bottom: 20px;
+  height: 30px;
+  text-align: center;
+  background-color: #f8eef2;
+}
+
+.submitNewTopic {
+  border-color: #ea4f87;
+  background-color: #ea4f87;
+  width: 285px;
+  height: 40px;
+  color: white;
+  border: none;
+  border-radius: 3px;
+}

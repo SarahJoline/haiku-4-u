@@ -36,7 +36,7 @@ function HaikuRow() {
           <div className="col">
             <h5 className="subject">SUBJECT</h5>
             <h3 className="subject-name">{subject}</h3>
-            <Input haikuData={haikus[subject]} />
+            <Input haikuData={subject} />
           </div>
           <PublishedHaiku haikuData={haikus[subject]} />
         </div>

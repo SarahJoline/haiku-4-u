@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import Dialog from "@material-ui/core/Dialog";
-import DialogTitle from "@material-ui/core/DialogTitle";
+import "./newTopic.css";
 
 function NewTopic() {
   let [haiku, setHaiku] = useState({ subject: " ", author: " ", text: " " });
@@ -22,15 +21,16 @@ function NewTopic() {
 
   return (
     <div className="topic-launch">
-      <div className="form">
+      <div className="subject-form">
         <input
-          className="subject"
+          className="subject-input"
           placeholder="Subject here, bitch"
           onChange={(e) => {
             setHaiku({ ...haiku, subject: e.target.value });
           }}
         ></input>
         <textarea
+          className="newTopic-input"
           rows="3"
           cols="2"
           placeholder="Write your haikus here,&#10;bla bla bla bla bla, bla bla.&#10;Then smash 'publish', bitch"
@@ -46,7 +46,7 @@ function NewTopic() {
           }}
         ></input>
         <button
-          className="submitHaiku"
+          className="submitNewTopic"
           onClick={(e) => {
             postHaiku(haiku);
           }}

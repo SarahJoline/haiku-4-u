@@ -13,7 +13,6 @@ function Header() {
         src={Logo}
         alt="circles"
         onClick={(e) => {
-          console.log("oh baby, oh my");
           setOpen(true);
         }}
       ></img>

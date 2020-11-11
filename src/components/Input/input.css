@@ -15,20 +15,17 @@
   flex-direction: column;
 }
 
-textarea {
+.haiku-text {
   border-color: #ea4f87;
   width: 281px;
   height: 101px;
   margin: 0px 0px 10px 50px;
   border-radius: 3px;
-}
-
-textarea::placeholder {
   line-height: 25px;
   padding: 10px;
 }
 
-button {
+.publish-btn {
   border-color: #ea4f87;
   background-color: #ea4f87;
   width: 285px;
