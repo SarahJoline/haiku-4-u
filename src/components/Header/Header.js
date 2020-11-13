@@ -4,8 +4,9 @@ import NewTopic from "../NewTopic/NewTopic";
 import "./header.css";
 import Dialog from "@material-ui/core/Dialog";
 
-function Header() {
+function Header(props) {
   const [open, setOpen] = useState(false);
+  const fetchData = props.fetchData;
 
   return (
     <div className="header">
@@ -18,7 +19,7 @@ function Header() {
       ></img>
       <h2>Haiku 4 U</h2>
       <Dialog open={open} onClose={() => setOpen(false)}>
-        <NewTopic />
+        <NewTopic fetchData={fetchData} />
       </Dialog>
     </div>
   );

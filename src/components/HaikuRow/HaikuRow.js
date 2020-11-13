@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./haikuRow.css";
 import Squiggles from "./squiggles.svg";
 import Input from "../Input/Input";
 import PublishedHaiku from "../PublishedHaiku/PublishedHaiku";
-import _ from "lodash";
 
 function HaikuRow(props) {
   const haikus = props.haikuData;
   const fetchData = props.fetchData;
+
   // Render a set of rows, one for each subject in our "haikus" object.
   const haikuRows = [];
 

@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./newTopic.css";
 
-function NewTopic() {
+function NewTopic(props) {
   let [haiku, setHaiku] = useState({ subject: " ", author: " ", text: " " });
+  const fetchData = props.fetchData;
+  console.log(fetchData);
 
   function postHaiku(haiku) {
     axios
@@ -11,6 +13,9 @@ function NewTopic() {
         subject: haiku.subject,
         author: haiku.author,
         text: haiku.text,
+      })
+      .then((res) => {
+        fetchData();
       })
       .catch((err) => {
         if (err) {

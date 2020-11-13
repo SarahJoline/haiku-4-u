@@ -27,7 +27,7 @@ function App() {
   }
   return (
     <div className="App">
-      <Header haikuData={haikus} fetchData={fetchData} />
+      <Header fetchData={fetchData} />
       <HaikuRow haikuData={haikus} fetchData={fetchData} />
     </div>
   );
