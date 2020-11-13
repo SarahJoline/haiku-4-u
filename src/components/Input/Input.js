@@ -4,6 +4,8 @@ import axios from "axios";
 
 function Input(props) {
   const haikus = props.haikuData;
+  const fetchData = props.fetchData;
+  console.log(haikus);
 
   let [haiku, setHaiku] = useState({
     subject: haikus,
@@ -16,6 +18,7 @@ function Input(props) {
         text: haiku.text,
         subject: haiku.subject,
       })
+      .then(fetchData())
       .catch((err) => {
         if (err) {
           console.log(err);

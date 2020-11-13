@@ -5,11 +5,11 @@ import Heart from "./heart.svg";
 
 function PublishedHaiku(props) {
   const haikus = props.haikuData;
-  console.log(haikus);
+  const fetchData = props.fetchData;
 
   function deleteBook(haiku) {
     const id = haiku.target.id;
-    axios.delete(`/api/delete/${id}`);
+    axios.delete(`/api/delete/${id}`).then(fetchData());
   }
 
   return haikus !== undefined ? (
@@ -33,6 +33,7 @@ function PublishedHaiku(props) {
               alt="ily"
               onClick={(event) => {
                 deleteBook(event);
+                console.log("clicked");
               }}
               id={res._id}
               data={res}

@@ -7,28 +7,31 @@ import _ from "lodash";
 
 function HaikuRow() {
   let [haikus, setHaikus] = useState();
+  console.log(haikus);
 
   useEffect(() => {
-    async function fetchData() {
-      let res = await fetch("/api/haikus");
-      res = await res.json();
-      const rawHaikus = res;
-      //  const groupedHaikus = _.groupBy(rawHaikus, "subject") // easy syntax
-      const groupedHaikus = _.groupBy(rawHaikus, (element) => {
-        if (element.subject == undefined) {
-          return "miscellaneous";
-        }
-        return element.subject;
-      });
-      setHaikus(groupedHaikus);
-    }
     fetchData();
   }, []);
+
+  async function fetchData() {
+    let res = await fetch("/api/haikus");
+    res = await res.json();
+    const rawHaikus = res;
+    //  const groupedHaikus = _.groupBy(rawHaikus, "subject") // easy syntax
+    const groupedHaikus = _.groupBy(rawHaikus, (element) => {
+      if (element.subject === undefined) {
+        return "miscellaneous";
+      }
+      return element.subject;
+    });
+    setHaikus(groupedHaikus);
+  }
 
   // Render a set of rows, one for each subject in our "haikus" object.
   const haikuRows = [];
 
   for (let subject in haikus) {
+    console.log(haikus);
     haikuRows.push(
       <div className="haikuRow">
         <img src={Squiggles} alt="squiggly lines" className="squiggles" />
@@ -36,9 +39,9 @@ function HaikuRow() {
           <div className="col">
             <h5 className="subject">SUBJECT</h5>
             <h3 className="subject-name">{subject}</h3>
-            <Input haikuData={subject} />
+            <Input haikuData={subject} fetchData={fetchData} />
           </div>
-          <PublishedHaiku haikuData={haikus[subject]} />
+          <PublishedHaiku haikuData={haikus[subject]} fetchData={fetchData} />
         </div>
       </div>
     );

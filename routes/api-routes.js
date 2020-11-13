@@ -27,8 +27,8 @@ router.post("/posted", (req, res) => {
     });
 });
 
-router.delete("/delete/:_id", (req, res) => {
-  db.Haikus.findByIdAndDelete(req.params._id)
+router.delete("/delete/:id", (req, res) => {
+  db.Haikus.findByIdAndDelete(req.params.id)
     .then((haiku) => {
       res.json(haiku);
     })
