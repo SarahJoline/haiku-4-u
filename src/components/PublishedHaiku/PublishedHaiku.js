@@ -7,9 +7,12 @@ function PublishedHaiku(props) {
   const haikus = props.haikuData;
   const fetchData = props.fetchData;
 
-  function deleteBook(haiku) {
+  function deleteHaiku(haiku) {
     const id = haiku.target.id;
-    axios.delete(`/api/delete/${id}`).then(fetchData());
+    console.log("hey");
+    axios.delete(`/api/delete/${id}`).then((res) => {
+      fetchData();
+    });
   }
 
   return haikus !== undefined ? (
@@ -32,7 +35,7 @@ function PublishedHaiku(props) {
               src={Heart}
               alt="ily"
               onClick={(event) => {
-                deleteBook(event);
+                deleteHaiku(event);
                 console.log("clicked");
               }}
               id={res._id}

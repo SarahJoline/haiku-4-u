@@ -3,22 +3,24 @@ import "./input.css";
 import axios from "axios";
 
 function Input(props) {
-  const haikus = props.haikuData;
+  const subject = props.haikuData;
   const fetchData = props.fetchData;
-  console.log(haikus);
+  console.log(subject);
 
   let [haiku, setHaiku] = useState({
-    subject: haikus,
+    subject: subject,
     text: " ",
   });
 
-  function postNew() {
+  function postNew(haiku) {
     axios
       .post("/api/posted", {
         text: haiku.text,
         subject: haiku.subject,
       })
-      .then(fetchData())
+      .then((res) => {
+        fetchData();
+      })
       .catch((err) => {
         if (err) {
           console.log(err);
