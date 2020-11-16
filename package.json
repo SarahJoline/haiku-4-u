@@ -1,6 +1,9 @@
 {
   "name": "haiku-4-u",
   "version": "0.1.0",
+  "engines": {
+    "node": "14.x"
+  },
   "private": true,
   "proxy": "http://localhost:5000",
   "dependencies": {
