@@ -4,6 +4,15 @@
   padding: 50px 50px 0px 50px;
 }
 
+.circles {
+  border-radius: 60px;
+}
+
+.circles:hover {
+  background-color: #f0a4c0;
+  transition: 2s;
+}
+
 h2 {
   color: #ea4f87;
   padding-left: 30px;

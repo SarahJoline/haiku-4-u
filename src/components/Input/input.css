@@ -25,6 +25,15 @@
   padding: 10px;
 }
 
+.haiku-author {
+  border: 1px solid #ea4f87;
+  width: 281px;
+  height: 25px;
+  padding-left: 5px;
+  border-radius: 2px;
+  margin: 0px 0px 10px 50px;
+}
+
 .publish-btn {
   border-color: #ea4f87;
   background-color: #ea4f87;

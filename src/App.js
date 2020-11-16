@@ -16,10 +16,13 @@ function App() {
     let res = await fetch("/api/haikus");
     res = await res.json();
     const rawHaikus = res;
-    //  const groupedHaikus = _.groupBy(rawHaikus, "subject") // easy syntax
+    // const groupedHaikus = _.groupBy(rawHaikus, "subject"); // easy syntax
+
+    // This allows for more manipulation
+
     const groupedHaikus = _.groupBy(rawHaikus, (element) => {
-      if (element.subject === undefined) {
-        return "miscellaneous";
+      if (element.subject === undefined || element.subject == " ") {
+        return "Miscellaneous";
       }
       return element.subject;
     });

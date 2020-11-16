@@ -4,12 +4,18 @@ const Schema = mongoose.Schema;
 const HaikuSchema = new Schema({
   subject: {
     type: String,
+    minlength: 3,
+    description: "subject is required",
   },
   text: {
     type: String,
+    minlength: 15,
+    description: "haiku is required, duh",
   },
   author: {
     type: String,
+    minlength: 3,
+    description: "no anonymous poetry here",
   },
   timestamp: {
     type: Date,

@@ -5,11 +5,11 @@ import axios from "axios";
 function Input(props) {
   const subject = props.haikuData;
   const fetchData = props.fetchData;
-  console.log(subject);
 
   let [haiku, setHaiku] = useState({
     subject: subject,
     text: " ",
+    author: " ",
   });
 
   function postNew(haiku) {
@@ -17,6 +17,7 @@ function Input(props) {
       .post("/api/posted", {
         text: haiku.text,
         subject: haiku.subject,
+        author: haiku.author,
       })
       .then((res) => {
         fetchData();
@@ -34,11 +35,18 @@ function Input(props) {
         <textarea
           className="haiku-text"
           rows="3"
-          placeholder="Write your haikus here,&#10;bla bla bla bla bla, bla bla.&#10;Then smash 'publish', bitch"
+          placeholder="5 syllables&#10;7 syllables&#10;5 syllables"
           onChange={(e) => {
             setHaiku({ ...haiku, text: e.target.value });
           }}
         ></textarea>
+        <input
+          className="haiku-author"
+          placeholder="Your name here"
+          onChange={(e) => {
+            setHaiku({ ...haiku, author: e.target.value });
+          }}
+        ></input>
         <button
           className="publish-btn"
           onClick={(e) => {

@@ -5,9 +5,8 @@ import "./newTopic.css";
 function NewTopic(props) {
   let [haiku, setHaiku] = useState({ subject: " ", author: " ", text: " " });
   const fetchData = props.fetchData;
-  console.log(fetchData);
 
-  function postHaiku(haiku) {
+  function postHaiku() {
     axios
       .post("/api/posted", {
         subject: haiku.subject,
@@ -29,7 +28,7 @@ function NewTopic(props) {
       <div className="subject-form">
         <input
           className="subject-input"
-          placeholder="Subject here, bitch"
+          placeholder="Subject here"
           onChange={(e) => {
             setHaiku({ ...haiku, subject: e.target.value });
           }}
@@ -38,14 +37,14 @@ function NewTopic(props) {
           className="newTopic-input"
           rows="3"
           cols="2"
-          placeholder="Write your haikus here,&#10;bla bla bla bla bla, bla bla.&#10;Then smash 'publish', bitch"
+          placeholder="5 syllables&#10;7 syllables&#10;5 syllables"
           onChange={(e) => {
             setHaiku({ ...haiku, text: e.target.value });
           }}
         ></textarea>
         <input
           className="author"
-          placeholder="Your name here, bitch"
+          placeholder="Your name here"
           onChange={(e) => {
             setHaiku({ ...haiku, author: e.target.value });
           }}

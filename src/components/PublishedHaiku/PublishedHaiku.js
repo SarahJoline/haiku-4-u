@@ -1,7 +1,6 @@
 import React from "react";
 import axios from "axios";
 import "./publishedHaiku.css";
-import Heart from "./heart.svg";
 
 function PublishedHaiku(props) {
   const haikus = props.haikuData;
@@ -9,7 +8,6 @@ function PublishedHaiku(props) {
 
   function deleteHaiku(haiku) {
     const id = haiku.target.id;
-    console.log("hey");
     axios.delete(`/api/delete/${id}`).then((res) => {
       fetchData();
     });
@@ -21,26 +19,26 @@ function PublishedHaiku(props) {
         <div className="idHere" key={res._id}>
           <pre className="haiku">{res.text}</pre>
           <div className="userInfo">
-            <div className="imgWillGoHere"></div>
+            {/* <div className="imgWillGoHere"></div> */}
             <div className="userLinks">
               <a href="#" className="publishedUser">
                 {res.author}
               </a>
               <br />
-              <a href="#" className="userPosts">
+              {/* <a href="#" className="userPosts">
                 7 Haikus
-              </a>
+              </a> */}
             </div>
-            <img
-              src={Heart}
-              alt="ily"
+            <button
+              className="deleteBtn"
               onClick={(event) => {
                 deleteHaiku(event);
-                console.log("clicked");
               }}
               id={res._id}
               data={res}
-            ></img>
+            >
+              X
+            </button>
           </div>
         </div>
       ))}

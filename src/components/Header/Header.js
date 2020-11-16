@@ -11,6 +11,7 @@ function Header(props) {
   return (
     <div className="header">
       <img
+        className="circles"
         src={Logo}
         alt="circles"
         onClick={(e) => {

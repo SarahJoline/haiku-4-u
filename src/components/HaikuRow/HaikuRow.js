@@ -12,7 +12,6 @@ function HaikuRow(props) {
   const haikuRows = [];
 
   for (let subject in haikus) {
-    console.log(haikus);
     haikuRows.push(
       <div className="haikuRow" key={subject}>
         <img src={Squiggles} alt="squiggly lines" className="squiggles" />

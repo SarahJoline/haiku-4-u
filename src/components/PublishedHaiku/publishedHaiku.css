@@ -31,14 +31,16 @@ pre {
 .haiku,
 .userInfo {
   margin-left: 30px;
+  display: flex;
+  justify-content: space-between;
 }
 
-.imgWillGoHere {
+/* .imgWillGoHere {
   background-color: #c2bcbc;
   height: 40px;
   width: 40px;
   border-radius: 20px;
-}
+} */
 
 .userLinks {
   margin: 5px 110px 0px 20px;
@@ -46,12 +48,24 @@ pre {
 
 .publishedUser {
   font-weight: bold;
-  color: black;
+  color: rgb(15, 14, 14);
   text-decoration: none;
 }
 
-.userPosts {
+/* .userPosts {
   font-size: 12px;
   text-decoration: none;
   color: rgb(0, 140, 255);
+} */
+
+.deleteBtn {
+  background-color: white;
+  color: #ff2c6f;
+  border: none;
+  float: left;
+}
+
+.deleteBtn:hover {
+  color: #ffd4dc;
+  transition: 0.5s;
 }
