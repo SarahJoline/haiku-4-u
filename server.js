@@ -51,15 +51,6 @@ mongoose
 const apiRoutes = require("./routes/api-routes");
 app.use("/api", apiRoutes);
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("public/src/build"));
-  app.get("*", (req, res) => {
-    res.sendFile(
-      path.resolve(__dirname, "public", "src", "build", "index.html")
-    );
-  });
-}
-
 app.listen(PORT, () => {
   console.log(`listening at http://localhost:${PORT}`);
 });
