@@ -21,7 +21,7 @@ function App() {
     // This allows for more manipulation
 
     const groupedHaikus = _.groupBy(rawHaikus, (element) => {
-      if (element.subject === undefined || element.subject == " ") {
+      if (element.subject === undefined || element.subject === " ") {
         return "Miscellaneous";
       }
       return element.subject;
