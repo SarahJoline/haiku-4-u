@@ -14,7 +14,8 @@ function App() {
 
   async function fetchData() {
     let res = await fetch("/api/haikus");
-    const rawHaikus = await res.json();
+    const rawHaikus = await res.text();
+    console.log(rawHaikus);
     const groupedHaikus = _.groupBy(rawHaikus, "subject"); // easy syntax
 
     // This allows for more manipulation
