@@ -14,18 +14,17 @@ function App() {
 
   async function fetchData() {
     let res = await fetch("/api/haikus");
-    res = await res.json();
-    const rawHaikus = res;
-    // const groupedHaikus = _.groupBy(rawHaikus, "subject"); // easy syntax
+    const rawHaikus = await res.json();
+    const groupedHaikus = _.groupBy(rawHaikus, "subject"); // easy syntax
 
     // This allows for more manipulation
 
-    const groupedHaikus = _.groupBy(rawHaikus, (element) => {
-      if (element.subject === undefined || element.subject === " ") {
-        return "Miscellaneous";
-      }
-      return element.subject;
-    });
+    // const groupedHaikus = _.groupBy(rawHaikus, (element) => {
+    //   if (element.subject === undefined || element.subject === " ") {
+    //     return "Miscellaneous";
+    //   }
+    //   return element.subject;
+    // });
     setHaikus(groupedHaikus);
   }
   return (
