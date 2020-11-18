@@ -44,7 +44,6 @@ mongoose
   .connect(MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useFindAndModify: false,
   })
   .then(() => console.log("connected to mongoDB"))
   .catch((err) => console.log(err));
@@ -53,7 +52,7 @@ const apiRoutes = require("./routes/api-routes");
 app.use("/api", apiRoutes);
 
 app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "public", "index.html"));
+  res.sendFile(path.resolve(__dirname, "build", "index.html"));
 });
 
 app.listen(PORT, () => {
