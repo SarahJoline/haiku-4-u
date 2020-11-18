@@ -44,6 +44,7 @@ mongoose
   .connect(MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    useFindAndModify: false,
   })
   .then(() => console.log("connected to mongoDB"))
   .catch((err) => console.log(err));
