@@ -20,7 +20,7 @@ function Header(props) {
       ></img>
       <h2>Haiku 4 U</h2>
       <Dialog open={open} onClose={() => setOpen(false)}>
-        <NewTopic fetchData={fetchData} />
+        <NewTopic fetchData={fetchData} onClose={() => setOpen(false)} />
       </Dialog>
     </div>
   );

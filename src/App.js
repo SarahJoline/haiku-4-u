@@ -7,6 +7,8 @@ import _ from "lodash";
 
 function App() {
   let [haikus, setHaikus] = useState();
+  let [authors, setAuthors] = useState();
+  let [posts, setPosts] = useState();
 
   useEffect(() => {
     fetchData();
@@ -17,7 +19,8 @@ function App() {
     console.log(res);
     const rawHaikus = await res.json();
     const groupedHaikus = _.groupBy(rawHaikus, "subject"); // easy syntax
-    console.log(groupedHaikus);
+    const groupedAuthors = _.groupBy(rawHaikus, "author");
+    const posts = _.countBy(rawHaikus, "author");
 
     // This allows for more manipulation
 
@@ -27,12 +30,19 @@ function App() {
     //   }
     //   return element.subject;
     // });
+    setPosts(posts);
     setHaikus(groupedHaikus);
+    setAuthors(groupedAuthors);
   }
   return (
     <div className="App">
       <Header fetchData={fetchData} />
-      <HaikuRow haikuData={haikus} fetchData={fetchData} />
+      <HaikuRow
+        haikuData={haikus}
+        authorData={authors}
+        postData={posts}
+        fetchData={fetchData}
+      />
     </div>
   );
 }

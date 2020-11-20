@@ -51,9 +51,50 @@ mongoose
 const apiRoutes = require("./routes/api-routes");
 app.use("/api", apiRoutes);
 
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "build", "index.html"));
-});
+// const router = express.Router();
+// const db = require("./models");
+
+// router.get("/api/haikus", (req, res) => {
+//   db.Haikus.find()
+//     .sort({ timestamp: -1 })
+//     .then((haiku) => {
+//       res.json(haiku);
+//     })
+//     .catch((err) => {
+//       res.json(err);
+//     });
+// });
+
+// router.post("/api/posted", (req, res) => {
+//   db.Haikus.create({
+//     subject: req.body.subject,
+//     author: req.body.author,
+//     text: req.body.text,
+//   })
+//     .then((posted) => {
+//       res.json(posted);
+//     })
+//     .catch((err) => {
+//       res.json(err);
+//     });
+// });
+
+// router.delete("/api/delete/:id", (req, res) => {
+//   db.Haikus.findByIdAndDelete(req.params.id)
+//     .then((haiku) => {
+//       res.json(haiku);
+//     })
+//     .catch((err) => {
+//       res.json(err);
+//     });
+// });
+
+// router.get("*", (req, res) => {
+//   res.sendFile(path.resolve(__dirname, "build", "index.html"));
+// });
+
+// Use the router for all requests
+// app.use("*", router);
 
 app.listen(PORT, () => {
   console.log(`listening at http://localhost:${PORT}`);

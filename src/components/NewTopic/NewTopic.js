@@ -5,6 +5,7 @@ import "./newTopic.css";
 function NewTopic(props) {
   let [haiku, setHaiku] = useState({ subject: " ", author: " ", text: " " });
   const fetchData = props.fetchData;
+  const closeModal = props.onClose;
 
   function postHaiku() {
     axios
@@ -16,12 +17,17 @@ function NewTopic(props) {
       .then((res) => {
         fetchData();
       })
+      .then(() => {
+        closeModal();
+      })
       .catch((err) => {
         if (err) {
           console.log(err);
         }
       });
   }
+
+  //if author exists postscounter ++1 else
 
   return (
     <div className="topic-launch">

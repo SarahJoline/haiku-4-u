@@ -5,6 +5,9 @@ import "./publishedHaiku.css";
 function PublishedHaiku(props) {
   const haikus = props.haikuData;
   const fetchData = props.fetchData;
+  const authors = props.authorData;
+  const posts = props.postData;
+  var x;
 
   function deleteHaiku(haiku) {
     const id = haiku.target.id;
@@ -12,6 +15,20 @@ function PublishedHaiku(props) {
       fetchData();
     });
   }
+
+  const authorPosts = (res) => {
+    let userPosts;
+    for (x in posts) {
+      if (x === res.author) {
+        userPosts = posts[x];
+      }
+    }
+    if (userPosts <= 1) {
+      return userPosts + " Haiku";
+    } else {
+      return userPosts + " Haikus";
+    }
+  };
 
   return haikus !== undefined ? (
     <div className="publishedHaiku">
@@ -21,13 +38,11 @@ function PublishedHaiku(props) {
           <div className="userInfo">
             {/* <div className="imgWillGoHere"></div> */}
             <div className="userLinks">
-              <a href="#" className="publishedUser">
-                {res.author}
-              </a>
+              <div className="publishedUser">{res.author}</div>
               <br />
-              {/* <a href="#" className="userPosts">
-                7 Haikus
-              </a> */}
+              <a href="#" className="userPosts">
+                {authorPosts(res)}
+              </a>
             </div>
             <button
               className="deleteBtn"
