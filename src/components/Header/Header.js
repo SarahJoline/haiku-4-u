@@ -18,7 +18,9 @@ function Header(props) {
           setOpen(true);
         }}
       ></img>
-      <h2>Haiku 4 U</h2>
+      <a className="haiku4U" href="/">
+        Haiku 4 U
+      </a>
       <Dialog open={open} onClose={() => setOpen(false)}>
         <NewTopic fetchData={fetchData} onClose={() => setOpen(false)} />
       </Dialog>

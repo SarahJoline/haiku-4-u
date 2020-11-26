@@ -16,8 +16,8 @@ function Input(props) {
     axios
       .post("/api/posted", {
         text: haiku.text,
-        subject: haiku.subject,
-        author: haiku.author,
+        subject: haiku.subject.trim(),
+        author: haiku.author.trim(),
       })
       .then((res) => {
         fetchData();

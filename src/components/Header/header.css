@@ -13,9 +13,10 @@
   transition: 2s;
 }
 
-h2 {
+.haiku4U {
   color: #ea4f87;
   padding-left: 30px;
   font-size: 1.5rem;
   margin-top: 45px;
+  text-decoration: none;
 }

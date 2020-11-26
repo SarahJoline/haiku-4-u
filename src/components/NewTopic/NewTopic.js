@@ -10,9 +10,9 @@ function NewTopic(props) {
   function postHaiku() {
     axios
       .post("/api/posted", {
-        subject: haiku.subject,
-        author: haiku.author,
-        text: haiku.text,
+        subject: haiku.subject.trim(),
+        author: haiku.author.trim(),
+        text: haiku.text.trim(),
       })
       .then((res) => {
         fetchData();

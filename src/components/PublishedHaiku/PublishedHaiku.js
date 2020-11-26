@@ -5,7 +5,6 @@ import "./publishedHaiku.css";
 function PublishedHaiku(props) {
   const haikus = props.haikuData;
   const fetchData = props.fetchData;
-  const authors = props.authorData;
   const posts = props.postData;
   var x;
 
@@ -40,7 +39,7 @@ function PublishedHaiku(props) {
             <div className="userLinks">
               <div className="publishedUser">{res.author}</div>
               <br />
-              <a href="#" className="userPosts">
+              <a href="/author" className="userPosts">
                 {authorPosts(res)}
               </a>
             </div>

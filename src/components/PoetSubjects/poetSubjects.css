@@ -1,0 +1,39 @@
+.poet {
+  display: flex;
+  flex-direction: row;
+  overflow: auto;
+}
+
+.poetEntries {
+  margin: 30px 50px 10px 50px;
+}
+
+pre {
+  white-space: pre;
+  word-wrap: break-word;
+  overflow: hidden;
+}
+
+.entryText {
+  background-color: #c2bcbc;
+  width: 281px;
+  height: 101px;
+  border-radius: 3px;
+  line-height: 22px;
+  padding: 15px;
+  margin: 20px 25px 10px 0px;
+  background: #fffbfc;
+  color: #ff2c6f;
+  border: 1px solid #ffd4dc;
+}
+
+.entryTitle {
+  color: #ea4f87;
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}

@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./reset.css";
 import "./App.css";
 import Header from "./components/Header/Header";
 import HaikuRow from "./components/HaikuRow/HaikuRow";
+import PoetPage from "./components/PoetPage/PoetPage";
 import _ from "lodash";
 
 function App() {
@@ -16,7 +18,6 @@ function App() {
 
   async function fetchData() {
     let res = await fetch("/api/haikus");
-    console.log(res);
     const rawHaikus = await res.json();
     const groupedHaikus = _.groupBy(rawHaikus, "subject"); // easy syntax
     const groupedAuthors = _.groupBy(rawHaikus, "author");
@@ -34,16 +35,26 @@ function App() {
     setHaikus(groupedHaikus);
     setAuthors(groupedAuthors);
   }
+
   return (
-    <div className="App">
-      <Header fetchData={fetchData} />
-      <HaikuRow
-        haikuData={haikus}
-        authorData={authors}
-        postData={posts}
-        fetchData={fetchData}
-      />
-    </div>
+    <Router>
+      <div className="App">
+        <Header fetchData={fetchData} />
+        <Switch>
+          <Route exact path="/">
+            <HaikuRow
+              haikuData={haikus}
+              authorData={authors}
+              postData={posts}
+              fetchData={fetchData}
+            />
+          </Route>
+          <Route exact path="/author">
+            <PoetPage authorData={authors}></PoetPage>
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
