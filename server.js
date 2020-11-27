@@ -1,9 +1,12 @@
 const express = require("express");
 const dotenv = require("dotenv");
-const app = express();
-const PORT = process.env.PORT || 8080;
 const mongoose = require("mongoose");
 const path = require("path");
+const cookieParser = require("cookie-parser");
+const bodyParser = require("body-parser");
+
+const PORT = process.env.PORT || 8080;
+const app = express();
 
 dotenv.config();
 
@@ -37,8 +40,12 @@ app.use((req, res, next) => {
 });
 // End of CORS stuff.
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+// Serve static assets out of build directory.
+app.use(express.static(path.join(__dirname, "build")));
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(cookieParser());
 
 mongoose
   .connect(MONGO_URI, {
@@ -88,7 +95,7 @@ app.delete("/api/delete/:id", (req, res) => {
 });
 
 app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "build", "index.html"));
+  res.sendFile(path.join(__dirname + "/build/index.html"));
 });
 
 app.listen(PORT, () => {
