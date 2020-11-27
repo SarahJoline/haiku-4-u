@@ -60,6 +60,8 @@ mongoose
 const db = require("./models");
 
 app.get("/api/haikus", (req, res) => {
+  console.log("GET REQUEST RECIEVED!");
+
   db.Haikus.find()
     .sort({ timestamp: -1 })
     .then((haiku) => {
