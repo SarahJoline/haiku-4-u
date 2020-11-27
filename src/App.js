@@ -17,7 +17,7 @@ function App() {
   }, []);
 
   async function fetchData() {
-    let res = await fetch("http://localhost:8080/api/haikus");
+    let res = await fetch("/api/haikus");
     const rawHaikus = await res.json();
     const groupedHaikus = _.groupBy(rawHaikus, "subject"); // easy syntax
     const groupedAuthors = _.groupBy(rawHaikus, "author");
