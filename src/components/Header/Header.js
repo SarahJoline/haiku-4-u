@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Logo from "./logo.svg";
+import HoverLogo from "./haiku4u-logo-hovered.svg";
 import NewTopic from "../NewTopic/NewTopic";
 import "./header.css";
 import Dialog from "@material-ui/core/Dialog";
@@ -10,14 +11,12 @@ function Header(props) {
 
   return (
     <div className="header">
-      <img
+      <div
         className="circles"
-        src={Logo}
-        alt="circles"
         onClick={(e) => {
           setOpen(true);
         }}
-      ></img>
+      ></div>
       <a className="haiku4U" href="/">
         Haiku 4 U
       </a>

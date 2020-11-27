@@ -48,54 +48,49 @@ mongoose
   .then(() => console.log("connected to mongoDB"))
   .catch((err) => console.log(err));
 
-const apiRoutes = require("./routes/api-routes");
-app.use("/api", apiRoutes);
+// const apiRoutes = require("./routes/api-routes");
+// app.use("/api", apiRoutes);
+const db = require("./models");
 
-// const router = express.Router();
-// const db = require("./models");
+app.get("/api/haikus", (req, res) => {
+  db.Haikus.find()
+    .sort({ timestamp: -1 })
+    .then((haiku) => {
+      res.json(haiku);
+    })
+    .catch((err) => {
+      res.json(err);
+    });
+});
 
-// router.get("/api/haikus", (req, res) => {
-//   db.Haikus.find()
-//     .sort({ timestamp: -1 })
-//     .then((haiku) => {
-//       res.json(haiku);
-//     })
-//     .catch((err) => {
-//       res.json(err);
-//     });
-// });
+app.post("/api/posted", (req, res) => {
+  db.Haikus.create({
+    subject: req.body.subject,
+    author: req.body.author,
+    text: req.body.text,
+  })
+    .then((posted) => {
+      res.json(posted);
+    })
+    .catch((err) => {
+      res.json(err);
+    });
+});
 
-// router.post("/api/posted", (req, res) => {
-//   db.Haikus.create({
-//     subject: req.body.subject,
-//     author: req.body.author,
-//     text: req.body.text,
-//   })
-//     .then((posted) => {
-//       res.json(posted);
-//     })
-//     .catch((err) => {
-//       res.json(err);
-//     });
-// });
+app.delete("/api/delete/:id", (req, res) => {
+  db.Haikus.findByIdAndDelete(req.params.id)
+    .then((haiku) => {
+      res.json(haiku);
+    })
+    .catch((err) => {
+      res.json(err);
+    });
+});
 
-// router.delete("/api/delete/:id", (req, res) => {
-//   db.Haikus.findByIdAndDelete(req.params.id)
-//     .then((haiku) => {
-//       res.json(haiku);
-//     })
-//     .catch((err) => {
-//       res.json(err);
-//     });
-// });
-
-// router.get("*", (req, res) => {
-//   res.sendFile(path.resolve(__dirname, "build", "index.html"));
-// });
-
-// Use the router for all requests
-// app.use("*", router);
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "build", "index.html"));
+});
 
 app.listen(PORT, () => {
-  console.log(`listening at http://localhost:${PORT}`);
+  console.log(`listening on port: ${PORT}`);
 });

@@ -5,12 +5,16 @@
 }
 
 .circles {
+  width: 118px;
+  height: 118px;
   border-radius: 60px;
+  background: url("./logo.svg");
 }
 
 .circles:hover {
-  background-color: #f0a4c0;
+  background: url("./haiku4u-logo-hovered.svg");
   transition: 2s;
+  cursor: pointer;
 }
 
 .haiku4U {
