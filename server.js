@@ -52,7 +52,7 @@ mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(() => console.log("connected to mongoDB"))
+  .then(() => console.log(MONGO_URI))
   .catch((err) => console.log(err));
 
 // const apiRoutes = require("./routes/api-routes");
