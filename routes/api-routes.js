@@ -17,6 +17,7 @@ router.post("/posted", (req, res) => {
   db.Haikus.create({
     subject: req.body.subject,
     author: req.body.author,
+    authorID: req.body.authorID,
     text: req.body.text,
   })
     .then((posted) => {

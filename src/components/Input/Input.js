@@ -18,6 +18,7 @@ function Input(props) {
         text: haiku.text,
         subject: haiku.subject.trim(),
         author: haiku.author.trim(),
+        authorID: haiku.author.split(" ").join(""),
       })
       .then((res) => {
         fetchData();

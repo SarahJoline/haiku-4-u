@@ -41,11 +41,11 @@ app.use((req, res, next) => {
 // End of CORS stuff.
 
 // Serve static assets out of build directory.
-app.use(express.static(path.join(__dirname, "build")));
+// app.use(express.static(path.join(__dirname, "build")));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(cookieParser());
+// app.use(cookieParser());
 
 mongoose
   .connect(MONGO_URI, {
@@ -72,10 +72,21 @@ app.get("/api/haikus", (req, res) => {
     });
 });
 
+app.get("/api/:authorID", (req, res) => {
+  db.Haikus.find({ authorID: req.params.authorID })
+    .then((haikus) => {
+      res.json(haikus);
+    })
+    .catch((err) => {
+      res.json(err);
+    });
+});
+
 app.post("/api/posted", (req, res) => {
   db.Haikus.create({
     subject: req.body.subject,
     author: req.body.author,
+    authorID: req.body.authorID,
     text: req.body.text,
   })
     .then((posted) => {

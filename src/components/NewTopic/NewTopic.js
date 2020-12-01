@@ -12,6 +12,7 @@ function NewTopic(props) {
       .post("/api/posted", {
         subject: haiku.subject.trim(),
         author: haiku.author.trim(),
+        authorID: haiku.author.split(" ").join(""),
         text: haiku.text.trim(),
       })
       .then((res) => {

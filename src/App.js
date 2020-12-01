@@ -20,7 +20,6 @@ function App() {
     let res = await fetch("/api/haikus");
     const rawHaikus = await res.json();
     const groupedHaikus = _.groupBy(rawHaikus, "subject"); // easy syntax
-    const groupedAuthors = _.groupBy(rawHaikus, "author");
     const posts = _.countBy(rawHaikus, "author");
 
     // This allows for more manipulation
@@ -33,8 +32,16 @@ function App() {
     // });
     setPosts(posts);
     setHaikus(groupedHaikus);
-    setAuthors(groupedAuthors);
   }
+
+  // function fetchAuthors() {
+  //   let author = fetch("/api/:authorID");
+  //   console.log(author);
+  // }
+
+  // function getAuthorID() {
+  //   console.log("Hello");
+  // }
 
   return (
     <Router>
@@ -44,13 +51,12 @@ function App() {
           <Route exact path="/">
             <HaikuRow
               haikuData={haikus}
-              authorData={authors}
               postData={posts}
               fetchData={fetchData}
             />
           </Route>
-          <Route exact path="/author">
-            <PoetPage authorData={authors}></PoetPage>
+          <Route path={"/:authorID"}>
+            <PoetPage></PoetPage>
           </Route>
         </Switch>
       </div>

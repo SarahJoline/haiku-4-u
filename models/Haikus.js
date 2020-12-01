@@ -17,6 +17,9 @@ const HaikuSchema = new Schema({
     minlength: 3,
     description: "no anonymous poetry here",
   },
+  authorID: {
+    type: String,
+  },
   timestamp: {
     type: Date,
     default: Date.now,
