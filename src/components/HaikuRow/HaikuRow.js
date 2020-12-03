@@ -13,7 +13,6 @@ function HaikuRow(props) {
 
   // Render a set of rows, one for each subject in our "haikus" object.
   const haikuRows = [];
-  console.log(haikuRows);
 
   for (let subject in haikus) {
     haikuRows.push(

@@ -34,9 +34,8 @@ function App() {
     setHaikus(groupedHaikus);
   }
 
-  // function fetchAuthors() {
-  //   let author = fetch("/api/:authorID");
-  //   console.log(author);
+  // function fetchAuthorRoute() {
+  //   return "/"
   // }
 
   // function getAuthorID() {

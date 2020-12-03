@@ -2,7 +2,6 @@ const express = require("express");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const path = require("path");
-const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 
 const PORT = process.env.PORT || 8080;
@@ -45,7 +44,8 @@ app.use((req, res, next) => {
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-// app.use(cookieParser());
+
+console.log("log1: ", MONGO_URI);
 
 mongoose
   .connect(MONGO_URI, {
@@ -56,59 +56,11 @@ mongoose
   .then(() => console.log(MONGO_URI))
   .catch((err) => console.log(err));
 
-// const apiRoutes = require("./routes/api-routes");
-// app.use("/api", apiRoutes);
-const db = require("./models");
-
-app.get("/api/haikus", (req, res) => {
-  console.log("GET REQUEST RECIEVED!");
-
-  db.Haikus.find()
-    .sort({ timestamp: -1 })
-    .then((haiku) => {
-      res.json(haiku);
-    })
-    .catch((err) => {
-      res.json(err);
-    });
-});
-
-app.get("/api/:authorID", (req, res) => {
-  db.Haikus.find({ authorID: req.params.authorID })
-    .then((haikus) => {
-      res.json(haikus);
-    })
-    .catch((err) => {
-      res.json(err);
-    });
-});
-
-app.post("/api/posted", (req, res) => {
-  db.Haikus.create({
-    subject: req.body.subject,
-    author: req.body.author,
-    authorID: req.body.authorID,
-    text: req.body.text,
-  })
-    .then((posted) => {
-      res.json(posted);
-    })
-    .catch((err) => {
-      res.json(err);
-    });
-});
-
-app.delete("/api/delete/:id", (req, res) => {
-  db.Haikus.findByIdAndDelete(req.params.id)
-    .then((haiku) => {
-      res.json(haiku);
-    })
-    .catch((err) => {
-      res.json(err);
-    });
-});
+const apiRoutes = require("./routes/api-routes");
+app.use("/api", apiRoutes);
 
 app.get("*", (req, res) => {
+  console.log("SENDING THE INDEX FILE! <3");
   res.sendFile(path.join(__dirname + "/build/index.html"));
 });
 
