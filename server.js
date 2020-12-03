@@ -40,7 +40,7 @@ app.use((req, res, next) => {
 // End of CORS stuff.
 
 // Serve static assets out of build directory.
-// app.use(express.static(path.join(__dirname, "build")));
+app.use(express.static(path.join(__dirname, "build")));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
