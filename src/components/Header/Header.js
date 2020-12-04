@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import Logo from "./logo.svg";
-import HoverLogo from "./haiku4u-logo-hovered.svg";
 import NewTopic from "../NewTopic/NewTopic";
 import "./header.css";
 import Dialog from "@material-ui/core/Dialog";
