@@ -9,6 +9,7 @@ function PoetPage(props) {
   let [author, setAuthor] = useState();
   let [authorName, setAuthorName] = useState();
   const url = props.match.params.authorID;
+  console.log("AHHHHHHHHHHHHHHHH    ", url);
 
   useEffect(() => {
     getAuthor();
@@ -21,6 +22,7 @@ function PoetPage(props) {
         let authorInfo = _.groupBy(res.data, "subject");
         setAuthorName(res.data[0].author);
         setAuthor(authorInfo);
+        console.log(res);
       })
       .catch((err) => {
         if (err) {
