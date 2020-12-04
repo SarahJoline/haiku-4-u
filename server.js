@@ -11,6 +11,18 @@ dotenv.config();
 
 const MONGO_URI = process.env.MONGODB_URI;
 
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+mongoose
+  .connect(MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+  })
+  .then(() => console.log("success!"))
+  .catch((err) => console.log(err));
+
 /*
  HOW TO CORS
 
@@ -39,23 +51,11 @@ app.use((req, res, next) => {
 });
 // End of CORS stuff.
 
-// Serve static assets out of build directory.
-app.use(express.static(path.join(__dirname, "build")));
-
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-
-mongoose
-  .connect(MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false,
-  })
-  .then(() => console.log("success!"))
-  .catch((err) => console.log(err));
-
 const apiRoutes = require("./routes/api-routes");
 app.use("/api", apiRoutes);
+
+// Serve static assets out of build directory.
+app.use(express.static(path.join(__dirname, "build")));
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname + "/build/index.html"));
