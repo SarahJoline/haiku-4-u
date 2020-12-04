@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Squiggles from "./squiggles.svg";
-import PoetSubjects from "../PoetSubjects/PoetSubjects";
 import "./poetPage.css";
 import axios from "axios";
 import _ from "lodash";
