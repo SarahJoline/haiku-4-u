@@ -3,17 +3,22 @@ const router = express.Router();
 const db = require("../models");
 
 router.get("/haikus", (req, res) => {
-  console.log("GETTING HAIKUS!");
-
   db.Haikus.find()
     .sort({ timestamp: -1 })
     .then((haiku) => {
-      console.log("GOT HAIKUS!");
       res.json(haiku);
     })
     .catch((err) => {
-      console.log("FAILED TO GET HAIKUS!");
+      res.json(err);
+    });
+});
 
+router.get("/author/:authorID", (req, res) => {
+  db.Haikus.find({ authorID: req.params.authorID })
+    .then((author) => {
+      res.json(author);
+    })
+    .catch((err) => {
       res.json(err);
     });
 });

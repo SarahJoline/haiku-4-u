@@ -9,7 +9,6 @@ import _ from "lodash";
 
 function App() {
   let [haikus, setHaikus] = useState();
-  let [authors, setAuthors] = useState();
   let [posts, setPosts] = useState();
 
   useEffect(() => {
@@ -34,14 +33,6 @@ function App() {
     setHaikus(groupedHaikus);
   }
 
-  // function fetchAuthorRoute() {
-  //   return "/"
-  // }
-
-  // function getAuthorID() {
-  //   console.log("Hello");
-  // }
-
   return (
     <Router>
       <div className="App">
@@ -54,9 +45,7 @@ function App() {
               fetchData={fetchData}
             />
           </Route>
-          <Route path={"/:authorID"}>
-            <PoetPage></PoetPage>
-          </Route>
+          <Route path="/authors/:authorID" component={PoetPage} />
         </Switch>
       </div>
     </Router>

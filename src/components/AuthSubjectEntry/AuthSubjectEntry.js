@@ -2,11 +2,14 @@ import React from "react";
 
 function AuthSubjectEntry(props) {
   const subjectEntries = props.authSubData;
+  console.log(subjectEntries);
 
   return subjectEntries !== undefined ? (
     <div className="poet">
       {subjectEntries.map((res) => (
-        <pre className="entryText">{res.text}</pre>
+        <pre className="entryText" key={res._id}>
+          {res.text}
+        </pre>
       ))}
     </div>
   ) : (

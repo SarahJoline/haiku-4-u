@@ -39,7 +39,7 @@ function PublishedHaiku(props) {
             <div className="userLinks">
               <div className="publishedUser">{res.author}</div>
               <br />
-              <a href={"/" + res.authorID} className="userPosts">
+              <a href={"/authors/" + res.authorID} className="userPosts">
                 {authorPosts(res)}
               </a>
             </div>

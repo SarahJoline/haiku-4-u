@@ -45,22 +45,19 @@ app.use(express.static(path.join(__dirname, "build")));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-console.log("log1: ", MONGO_URI);
-
 mongoose
   .connect(MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
   })
-  .then(() => console.log(MONGO_URI))
+  .then(() => console.log("success!"))
   .catch((err) => console.log(err));
 
 const apiRoutes = require("./routes/api-routes");
 app.use("/api", apiRoutes);
 
 app.get("*", (req, res) => {
-  console.log("SENDING THE INDEX FILE! <3");
   res.sendFile(path.join(__dirname + "/build/index.html"));
 });
 
