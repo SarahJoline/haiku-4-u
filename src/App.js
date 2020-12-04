@@ -38,6 +38,7 @@ function App() {
       <div className="App">
         <Header fetchData={fetchData} />
         <Switch>
+          <Route path="/authors/:authorID" component={PoetPage} />
           <Route exact path="/">
             <HaikuRow
               haikuData={haikus}
@@ -45,7 +46,6 @@ function App() {
               fetchData={fetchData}
             />
           </Route>
-          <Route path="/authors/:authorID" component={PoetPage} />
         </Switch>
       </div>
     </Router>

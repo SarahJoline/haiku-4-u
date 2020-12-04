@@ -1,27 +1,30 @@
 import React from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import "./publishedHaiku.css";
 
 function PublishedHaiku(props) {
   const haikus = props.haikuData;
   const fetchData = props.fetchData;
   const posts = props.postData;
-  var x;
 
   function deleteHaiku(haiku) {
     const id = haiku.target.id;
+
     axios.delete(`/api/delete/${id}`).then((res) => {
       fetchData();
     });
   }
 
-  const authorPosts = (res) => {
+  const authorPostCountText = (res) => {
     let userPosts;
-    for (x in posts) {
-      if (x === res.author) {
-        userPosts = posts[x];
+
+    for (let post in posts) {
+      if (post === res.author) {
+        userPosts = posts[post];
       }
     }
+
     if (userPosts <= 1) {
       return userPosts + " Haiku";
     } else {
@@ -29,27 +32,27 @@ function PublishedHaiku(props) {
     }
   };
 
-  return haikus !== undefined ? (
+  return haikus ? (
     <div className="publishedHaiku">
-      {haikus.map((res) => (
-        <div className="idHere" key={res._id}>
-          <pre className="haiku">{res.text}</pre>
+      {haikus.map((haiku) => (
+        <div className="idHere" key={haiku._id}>
+          <pre className="haiku">{haiku.text}</pre>
           <div className="userInfo">
             {/* <div className="imgWillGoHere"></div> */}
             <div className="userLinks">
-              <div className="publishedUser">{res.author}</div>
+              <div className="publishedUser">{haiku.author}</div>
               <br />
-              <a href={"/authors/" + res.authorID} className="userPosts">
-                {authorPosts(res)}
-              </a>
+              <Link to={"/authors/" + haiku.authorID} className="userPosts">
+                {authorPostCountText(haiku)}
+              </Link>
             </div>
             <button
               className="deleteBtn"
               onClick={(event) => {
                 deleteHaiku(event);
               }}
-              id={res._id}
-              data={res}
+              id={haiku._id}
+              data={haiku}
             >
               X
             </button>
@@ -58,7 +61,7 @@ function PublishedHaiku(props) {
       ))}
     </div>
   ) : (
-    <div></div>
+    <div />
   );
 }
 

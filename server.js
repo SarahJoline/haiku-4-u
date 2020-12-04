@@ -51,12 +51,16 @@ app.use((req, res, next) => {
 });
 // End of CORS stuff.
 
-const apiRoutes = require("./routes/api-routes");
-app.use("/api", apiRoutes);
-
 // Serve static assets out of build directory.
 app.use(express.static(path.join(__dirname, "build")));
 
+// API routes
+const apiRoutes = require("./routes/api-routes");
+app.use("/api", apiRoutes);
+
+// Anything that doesn't start with /static or /api will now fall through to this path.
+// Then Node replies with /build/index.html.
+// The /build folder comes from running "npm run build", unless you've set up Heroku to run it automatically.
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname + "/build/index.html"));
 });
