@@ -12,4 +12,7 @@
   background: #fffbfc;
   color: #ff2c6f;
   border: 1px solid #ffd4dc;
+  margin-left: 40px;
+  display: flex;
+  justify-content: space-between;
 }

@@ -7,7 +7,7 @@
 }
 
 .poet {
-  margin: 10px 0px;
+  margin: 0px 0px;
   display: flex;
   flex-direction: row;
   overflow: auto;
@@ -19,4 +19,7 @@
 
 .entryTitle {
   color: #ff2c6f;
+  font-weight: bold;
+  font-size: 30px;
+  margin: 30px 0px 0px 40px;
 }
