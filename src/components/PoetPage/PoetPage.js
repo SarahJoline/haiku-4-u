@@ -37,7 +37,7 @@ function PoetPage(props) {
     authorSubjects.push(
       <div className="poet" key={subject}>
         <div className="poetEntries">
-          <div className="entryTitle">{subject}</div>
+          <h2 className="entryTitle">{subject}</h2>
           <AuthSubjectEntry authSubData={author[subject]} />
         </div>
       </div>

@@ -8,4 +8,15 @@
 
 .poet {
   margin: 10px 0px;
+  display: flex;
+  flex-direction: row;
+  overflow: auto;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.entryTitle {
+  color: #ff2c6f;
 }
