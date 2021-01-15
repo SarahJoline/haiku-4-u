@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react";
-import Squiggles from "./squiggles.svg";
-import "./poetPage.css";
+import Squiggles from "../HaikuRow/squiggles.svg";
+import "./index.css";
 import axios from "axios";
 import _ from "lodash";
-import AuthSubjectEntry from "../AuthSubjectEntry/AuthSubjectEntry";
+import Subjects from "../Subjects";
 
 function PoetPage(props) {
   let [author, setAuthor] = useState();
   let [authorName, setAuthorName] = useState();
   const url = props.match.params.authorID;
-  console.log("AHHHHHHHHHHHHHHHH    ", url);
 
   useEffect(() => {
     getAuthor();
@@ -22,7 +21,6 @@ function PoetPage(props) {
         let authorInfo = _.groupBy(res.data, "subject");
         setAuthorName(res.data[0].author);
         setAuthor(authorInfo);
-        console.log(res);
       })
       .catch((err) => {
         if (err) {
@@ -38,7 +36,7 @@ function PoetPage(props) {
       <div className="poet" key={subject}>
         <div className="poetEntries">
           <h2 className="entryTitle">{subject}</h2>
-          <AuthSubjectEntry authSubData={author[subject]} />
+          <Subjects subject={author[subject]} />
         </div>
       </div>
     );

@@ -1,27 +1,25 @@
 import React, { useState } from "react";
-import "./input.css";
 import axios from "axios";
+import "./index.css";
 
-function Input(props) {
-  const subject = props.haikuData;
+function NewTopic(props) {
+  let [haiku, setHaiku] = useState({ subject: " ", author: " ", text: " " });
   const fetchData = props.fetchData;
+  const closeModal = props.onClose;
 
-  let [haiku, setHaiku] = useState({
-    subject: subject,
-    text: " ",
-    author: " ",
-  });
-
-  function postNew(haiku) {
+  function postHaiku() {
     axios
       .post("/api/posted", {
-        text: haiku.text,
         subject: haiku.subject.trim(),
         author: haiku.author.trim(),
         authorID: haiku.author.split(" ").join(""),
+        text: haiku.text.trim(),
       })
       .then((res) => {
         fetchData();
+      })
+      .then(() => {
+        closeModal();
       })
       .catch((err) => {
         if (err) {
@@ -30,28 +28,38 @@ function Input(props) {
       });
   }
 
+  //if author exists postscounter ++1 else
+
   return (
-    <div className="input">
-      <div className="form">
+    <div className="topic-launch">
+      <div className="subject-form">
+        <input
+          className="subject-input"
+          placeholder="Subject here"
+          onChange={(e) => {
+            setHaiku({ ...haiku, subject: e.target.value });
+          }}
+        ></input>
         <textarea
-          className="haiku-text"
+          className="newTopic-input"
           rows="3"
+          cols="2"
           placeholder="5 syllables&#10;7 syllables&#10;5 syllables"
           onChange={(e) => {
             setHaiku({ ...haiku, text: e.target.value });
           }}
         ></textarea>
         <input
-          className="haiku-author"
+          className="author"
           placeholder="Your name here"
           onChange={(e) => {
             setHaiku({ ...haiku, author: e.target.value });
           }}
         ></input>
         <button
-          className="publish-btn"
+          className="submitNewTopic"
           onClick={(e) => {
-            postNew(haiku);
+            postHaiku(haiku);
           }}
         >
           PUBLISH HAIKU
@@ -61,4 +69,4 @@ function Input(props) {
   );
 }
 
-export default Input;
+export default NewTopic;

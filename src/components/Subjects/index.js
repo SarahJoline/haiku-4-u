@@ -1,9 +1,8 @@
 import React from "react";
-import "./authSubjectEntry.css";
+import "./index.css";
 
-function AuthSubjectEntry(props) {
-  const subjectEntries = props.authSubData;
-  console.log(subjectEntries);
+function Subjects(props) {
+  const subjectEntries = props.subject;
 
   return subjectEntries !== undefined ? (
     <div className="poet">
@@ -18,4 +17,4 @@ function AuthSubjectEntry(props) {
   );
 }
 
-export default AuthSubjectEntry;
+export default Subjects;

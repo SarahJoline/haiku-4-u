@@ -1,17 +1,15 @@
 import React from "react";
-import "./haikuRow.css";
+import "./index.css";
 import Squiggles from "./squiggles.svg";
-import Input from "../Input/Input";
-import PublishedHaiku from "../PublishedHaiku/PublishedHaiku";
+import Input from "../Input";
+import PublishedHaiku from "../PublishedHaiku";
 
 function HaikuRow(props) {
   const haikus = props.haikuData;
   const authors = props.authorData;
   const fetchData = props.fetchData;
-
   const posts = props.postData;
 
-  // Render a set of rows, one for each subject in our "haikus" object.
   const haikuRows = [];
 
   for (let subject in haikus) {

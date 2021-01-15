@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import "./publishedHaiku.css";
+import "./index.css";
 
 function PublishedHaiku(props) {
   const haikus = props.haikuData;
@@ -38,7 +38,6 @@ function PublishedHaiku(props) {
         <div className="idHere" key={haiku._id}>
           <pre className="haiku">{haiku.text}</pre>
           <div className="userInfo">
-            {/* <div className="imgWillGoHere"></div> */}
             <div className="userLinks">
               <div className="publishedUser">{haiku.author}</div>
               <br />

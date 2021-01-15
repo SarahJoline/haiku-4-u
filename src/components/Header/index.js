@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import NewTopic from "../NewTopic/NewTopic";
-import "./header.css";
+import NewTopic from "../NewTopic";
+import "./index.css";
 import Dialog from "@material-ui/core/Dialog";
 
 function Header(props) {

@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./reset.css";
 import "./App.css";
-import Header from "./components/Header/Header";
-import HaikuRow from "./components/HaikuRow/HaikuRow";
-import PoetPage from "./components/PoetPage/PoetPage";
+import Header from "./components/Header";
+import HaikuRow from "./components/HaikuRow";
+import PoetPage from "./components/PoetPage";
 import _ from "lodash";
 
 function App() {
