@@ -44,8 +44,9 @@ pre {
 
 a {
   text-decoration: none;
-  color: rgb(15, 14, 14);
+  color: #f75f8f;
   font-size: 14px;
+  cursor: pointer;
 }
 
 .userLinks {
@@ -54,7 +55,7 @@ a {
 
 .publishedUser {
   font-weight: bold;
-  color: rgb(15, 14, 14);
+  color: #f75f8f;
   text-decoration: none;
 }
 
@@ -63,6 +64,7 @@ a {
   color: #ff2c6f;
   border: none;
   float: left;
+  cursor: pointer;
 }
 
 .deleteBtn:hover {
