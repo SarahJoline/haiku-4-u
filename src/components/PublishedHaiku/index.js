@@ -40,7 +40,6 @@ function PublishedHaiku(props) {
           <div className="userInfo">
             <div className="userLinks">
               <div className="publishedUser">{haiku.author}</div>
-              <br />
               <Link to={"/authors/" + haiku.authorID} className="userPosts">
                 {authorPostCountText(haiku)}
               </Link>
