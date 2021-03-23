@@ -1,6 +1,8 @@
 .topic-launch {
   padding: 30px;
-  background-color: #f8eef2;
+  background-color: #f5f5f5;
+  border: 1px solid rgb(241, 103, 126);
+  border-radius: 4px;
 }
 
 .subject-form {
@@ -9,7 +11,7 @@
 }
 
 .newTopic-input {
-  border-color: #f8eef2;
+  border-color: rgba(241, 103, 126, 0.527);
   width: 285px;
   height: 101px;
   border-radius: 3px;
@@ -17,17 +19,17 @@
   text-align: center;
   line-height: 25px;
   padding-top: 10px;
-  background-color: #f8eef2;
+  background-color: #f5f5f5;
 }
 
 .author,
 .subject-input {
-  border: 1px solid #f8eef2;
+  border: 1px solid rgba(241, 103, 126, 0.527);
   border-radius: 3px;
   margin-bottom: 20px;
   height: 30px;
   text-align: center;
-  background-color: #f8eef2;
+  background-color: #f5f5f5;
 }
 
 .submitNewTopic {

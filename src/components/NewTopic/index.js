@@ -28,8 +28,6 @@ function NewTopic(props) {
       });
   }
 
-  //if author exists postscounter ++1 else
-
   return (
     <div className="topic-launch">
       <div className="subject-form">
