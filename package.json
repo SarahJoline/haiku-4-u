@@ -1,6 +1,7 @@
 {
   "name": "haiku-4-u",
   "version": "0.1.0",
+  "proxy": "https://haiku-4-u.onrender.com",
   "engines": {
     "node": "14.x",
     "npm": "6.x"
@@ -49,7 +50,6 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:8080",
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "babel-eslint": "^10.1.0",
