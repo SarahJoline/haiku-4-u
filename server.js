@@ -9,7 +9,7 @@ const app = express();
 
 dotenv.config();
 
-const MONGO_URI = "mongodb+srv://snaas:Skiwi12@cluster0.cfvok.mongodb.net/";
+const MONGO_URI = process.env.MONGO_URI;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
