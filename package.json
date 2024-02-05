@@ -26,8 +26,8 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^3.4.4",
-    "serve": "^11.3.2"
+    "react-scripts": "^5.0.1",
+    "serve": "^14.2.1"
   },
   "scripts": {
     "dev": "react-scripts start",
@@ -36,9 +36,6 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "heroku-postbuild": "npm run build"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   },
   "browserslist": {
     "production": [
@@ -54,8 +51,8 @@
   },
   "proxy": "http://localhost:8080",
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "babel-eslint": "^10.1.0",
-    "eslint": "^6.6.0",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-import": "^2.22.1",
